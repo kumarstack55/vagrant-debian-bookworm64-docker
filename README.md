@@ -8,7 +8,7 @@
 ## Installation
 
 ```bash
-git clone https://...
+git clone https://github.com/kumarstack55/vagrant-debian-bookworm64-docker.git
 Set-Location .\vagrant-debian-bookworm64-docker
 
 vagrant up
