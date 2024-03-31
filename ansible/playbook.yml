@@ -1,0 +1,20 @@
+- hosts: localhost
+  tasks:
+    - name: Ensure that jq is installed.
+      apt:
+        name: jq
+      become: yes
+    - name: Ensure that mlocate is installed.
+      apt:
+        name: mlocate
+      become: yes
+    - name: Ensure that poetry is installed.
+      ansible.builtin.shell:
+        cmd: curl -sSL https://install.python-poetry.org | python3 -
+        creates: "$HOME/.local/bin/poetry"
+    - name: Ensure that poetry path is configured.
+      ansible.builtin.lineinfile:
+        line: 'export PATH="/home/vagrant/.local/bin:$PATH"'
+        path: $HOME/.bash_profile
+        create: true
+        backup: true
